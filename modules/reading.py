@@ -27,6 +27,7 @@ def read_input_data():
     df_last = read_url_csv(LAST_SEASON_PATH)
     df_data = pd.concat([df_last, df_this], ignore_index=True)
     df_data = df_data.loc[:, ['Date', 'Home Team', 'Away Team', 'Result']]
+    df_data.columns = ['date', 'home_team', 'away_team', 'result']
     return df_data
 
 
