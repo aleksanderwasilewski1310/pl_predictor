@@ -5,6 +5,11 @@ import certifi
 import ssl
 
 
+class Data:
+    def __init__(self):
+        self.data = read_input_data()
+
+
 def read_url_csv(path):
     """
     Reads data from csv online and converts to Pandas DataFrame
@@ -21,9 +26,11 @@ def read_input_data():
     df_this = read_url_csv(THIS_SEASON_PATH)
     df_last = read_url_csv(LAST_SEASON_PATH)
     df_data = pd.concat([df_last, df_this], ignore_index=True)
+    df_data = df_data.loc[:, ['Date', 'Home Team', 'Away Team', 'Result']]
     return df_data
 
 
 if __name__ == "__main__":
-    print(read_input_data().shape)
+    d = Data()
+    print(d.data.columns)
 
